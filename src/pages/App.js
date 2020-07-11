@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Grid from '../components/Grid'
 import axios from 'axios'
+import Header from '../components/Header'
 
 const App = ()=> {
   const [Super,setSuper] = useState("");
@@ -19,7 +20,9 @@ const App = ()=> {
           console.log(Super)
 const data=Super
   return (
+    
     <div className="App container-fluid"> 
+    <Header></Header>
       <Grid
       data={data}>
       </Grid>        
