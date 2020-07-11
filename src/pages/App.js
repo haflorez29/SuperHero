@@ -3,11 +3,11 @@ import Grid from '../components/Grid'
 import axios from 'axios'
 
 const App = ()=> {
-  const [Super, setSuper] = useState();
+  const [Super,setSuper] = useState("");
 
   useEffect( () => {   
-    for(let i=1; i<3; i++){
-      axios.get(`https://superheroapi.com/api.php/3340656869279895/${1}`).then((res) =>{
+    for(let i=1; i<4; i++){
+      axios.get(`https://superheroapi.com/api.php/3340656869279895/${i}`).then((res) =>{
         const supers = res.data
         return (
           setSuper(supers)
