@@ -5,23 +5,32 @@ import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Heroes.css";
 
 const Heroes = ({ Super }) => {
-  const [Sup, setSup] = useState();
-  const [votesLike, setVotesLike] = useState(0);
+  const [Sup, setSup] = useState({id:""});
+  const [votesLike, setVotesLike] = useState("");
 
-  let like = "clear";
-  let dislike = "clear";
+  let like = ""
+  let dislike = ""
+  console.log(Sup.id)
+  // console.log(votesLike);
 
-  Super.map((e) => {
-    const storage = window.localStorage.getItem(`${e.id}`);
-    // console.log(storage)
-    if (storage == 0) {
-      like = "like";
-      dislike = "clear";
-    } else if (storage == 1) {
-      like = "clear";
-      dislike = "dislike";
-    }
-  });
+  localStorage.setItem(`${Sup.name}`, votesLike);
+  const storage = window.localStorage.getItem(`${Sup.name}`);
+  console.log(storage)
+
+  if (storage ==  0) {
+    like = "like";
+    dislike = "clear"
+  } else if (storage == 1) {
+    dislike = "dislike";
+    like = "clear"
+  }
+
+
+  const addCount = (valor) =>{
+    // console.log(valor)
+    setVotesLike(valor)
+
+  }
 
   // console.log(votesLike);
 
@@ -29,13 +38,14 @@ const Heroes = ({ Super }) => {
     <div className="flex  flex-wrap m-4 justify-center">
       {Super.map((e) => {
         return (
-          <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/6">
+          <div className="max-w-sm rounded overflow-hidden shadow-lg m-4 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/6"
+          key={e.id}>
             <Link
               to={{
                 pathname: "/Description",
                 state: { state: e },
               }}
-              key={e.id}
+           
             >
               <div className="" id="card">
                 <img src={e.images.sm} className="w-full" alt="image" />
@@ -48,12 +58,9 @@ const Heroes = ({ Super }) => {
               <li className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 <button
                   onClick={() => {
-                    if (e.id) {
-                      setSup(e);
-                      setVotesLike(0);
-                      localStorage.setItem(`${e.id}`, votesLike);
-                    }
-                  }}
+                    setSup(e);
+                    addCount(0)
+                    }}
                   className={like}
                 >
                   <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
@@ -61,11 +68,9 @@ const Heroes = ({ Super }) => {
               </li>
               <li className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
                 <button
-                  onClick={() => {
-                    if (e.id) {
-                      setVotesLike(1);
-                      localStorage.setItem(`${e.id}`, votesLike);
-                    }
+                  onClick={() => 
+                  { setSup(e);
+                    addCount(1)                  
                   }}
                   className={dislike}
                 >

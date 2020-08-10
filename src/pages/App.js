@@ -17,7 +17,7 @@ const App = () => {
       .then((res) => {
         // console.log(res.data[3])
         superT = res.data;
-        console.log(superT);
+        // console.log(superT);
         setSuper(superT);
       });
   }, [setSuper]);
