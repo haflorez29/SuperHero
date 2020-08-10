@@ -18,14 +18,14 @@ const Pagination = ({ heroPerPage, totalHero, paginate }) => {
       <nav className="block">
         <ul className="flex pl-0 rounded list-none flex-wrap">
           <li>            
-              <FontAwesomeIcon class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-pink-500 bg-pink-500 text-white" icon={faChevronCircleLeft}></FontAwesomeIcon>           
+              <FontAwesomeIcon class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-teal-500 bg-teal-500 text-white" icon={faChevronCircleLeft}></FontAwesomeIcon>           
           </li>
           {pageNumbers.map((e) => {
             return (
               <li key={e} className="">
                 <Link
                   to="/"
-                  className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-pink-500 text-white bg-pink-500"
+                  className="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-teal-500 text-black bg-white hover:bg-gray-500"
                   onClick={() => paginate(e)}
                 >
                   {e}
@@ -34,7 +34,7 @@ const Pagination = ({ heroPerPage, totalHero, paginate }) => {
             );
           })}
           <li>            
-              <FontAwesomeIcon class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-pink-500 bg-pink-500 text-white" icon={faChevronCircleRight}></FontAwesomeIcon>           
+              <FontAwesomeIcon class="first:ml-0 text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-teal-500 bg-teal-500 text-white" icon={faChevronCircleRight}></FontAwesomeIcon>           
           </li>
         </ul>
       </nav>
