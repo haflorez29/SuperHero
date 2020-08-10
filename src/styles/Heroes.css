@@ -1,0 +1,9 @@
+.like,
+.dislike {
+    color: red;
+    font-size: 1.6em;
+}
+
+.clear {
+  color: gray;
+}

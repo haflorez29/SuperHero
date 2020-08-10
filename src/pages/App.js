@@ -1,33 +1,44 @@
-import React, {useState, useEffect} from 'react';
-import Grid from '../components/Grid'
-import axios from 'axios'
-import Header from '../components/Header'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "../components/Header";
+import Heroes from "../components/Heroes"
+import Pagination from "../components/Pagination"
+import "../styles/Grid.css";
 
-const App = ()=> {
-  const [Super,setSuper] = useState("");
+const App = () => {
+  const [Super, setSuper] = useState([]);
+  const [currentPage, setCurrentPage] = useState (1);
+  const [heroPerPage] = useState (9);
 
-  useEffect( () => {   
-    for(let i=1; i<4; i++){
-      axios.get(`https://superheroapi.com/api.php/3340656869279895/${i}`).then((res) =>{
-        const supers = res.data
-        return (
-          setSuper(supers)
-          )
-        })
-      }
-    },[])
+  useEffect(() => {
+    let superT = "";
+    axios
+      .get(`https://akabab.github.io/superhero-api/api/all.json`)
+      .then((res) => {
+        // console.log(res.data[3])
+        superT = res.data;
+        console.log(superT);
+        setSuper(superT);
+      });
+  }, [setSuper]);
 
-          console.log(Super)
-const data=Super
+  const indexOfLastHeroes = currentPage * heroPerPage;
+  const indexOfFirsPost = indexOfLastHeroes - heroPerPage;
+  const currentPosts =  Super.slice(indexOfFirsPost, indexOfLastHeroes);
+
+
+  const paginate = pageNumber => setCurrentPage(pageNumber)
+
   return (
-    
-    <div className="App container-fluid"> 
-    <Header></Header>
-      <Grid
-      data={data}>
-      </Grid>        
+    <div className="App ">
+      <Header></Header>
+      <Pagination
+       heroPerPage={heroPerPage} 
+       totalHero={Super.length} 
+      paginate={paginate}></Pagination>
+      <Heroes Super={currentPosts}></Heroes>
     </div>
   );
-}
+};
 
 export default App;
