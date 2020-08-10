@@ -25,8 +25,6 @@ const App = () => {
   const indexOfLastHeroes = currentPage * heroPerPage;
   const indexOfFirsPost = indexOfLastHeroes - heroPerPage;
   const currentPosts =  Super.slice(indexOfFirsPost, indexOfLastHeroes);
-
-
   const paginate = pageNumber => setCurrentPage(pageNumber)
 
   return (

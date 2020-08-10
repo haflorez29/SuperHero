@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Description = (state) =>{
-  // console.log(state.location.state.state)
   const oneSuper = state.location.state.state
   return(
     <div class="flex justify-center bg-indigo-100 ">

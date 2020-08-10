@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHeart,
-  faHeartBroken,
-  faNewspaper,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import "../styles/Heroes.css";
 
 const Heroes = ({ Super }) => {
@@ -14,22 +10,20 @@ const Heroes = ({ Super }) => {
 
   let like = "clear";
   let dislike = "clear";
-  
 
-  Super.map((e)=>{
+  Super.map((e) => {
     const storage = window.localStorage.getItem(`${e.id}`);
-  console.log(storage)
+    // console.log(storage)
     if (storage == 1) {
       like = "like";
-      dislike = "clear"
+      dislike = "clear";
     } else if (storage == 0) {
       like = "clear";
       dislike = "dislike";
     }
-  })
+  });
 
-  
-  console.log(votesLike);
+  // console.log(votesLike);
 
   return (
     <div className="flex  flex-wrap m-4 justify-center">
@@ -46,8 +40,8 @@ const Heroes = ({ Super }) => {
               <div className="" id="card">
                 <img src={e.images.sm} className="w-full" alt="image" />
                 <div className="px-6 py-4">
-                <h5 className="font-bold text-xl mb-2">{e.name}</h5>
-                </div>               
+                  <h5 className="font-bold text-xl mb-2">{e.name}</h5>
+                </div>
               </div>
             </Link>
             <ul className="px-6 py-4">
@@ -55,11 +49,10 @@ const Heroes = ({ Super }) => {
                 <button
                   onClick={() => {
                     if (e.id) {
-                    setSup(e)
-                    setVotesLike(0);
-                    localStorage.setItem(`${e.id}`, votesLike);
-                    
-                  }
+                      setSup(e);
+                      setVotesLike(0);
+                      localStorage.setItem(`${e.id}`, votesLike);
+                    }
                   }}
                   className={like}
                 >
@@ -70,8 +63,9 @@ const Heroes = ({ Super }) => {
                 <button
                   onClick={() => {
                     if (e.id) {
-                    setVotesLike(1);
-                    localStorage.setItem(`${e.id}`, votesLike)};
+                      setVotesLike(1);
+                      localStorage.setItem(`${e.id}`, votesLike);
+                    }
                   }}
                   className={dislike}
                 >
