@@ -14,10 +14,10 @@ const Heroes = ({ Super }) => {
   Super.map((e) => {
     const storage = window.localStorage.getItem(`${e.id}`);
     // console.log(storage)
-    if (storage == 1) {
+    if (storage == 0) {
       like = "like";
       dislike = "clear";
-    } else if (storage == 0) {
+    } else if (storage == 1) {
       like = "clear";
       dislike = "dislike";
     }
